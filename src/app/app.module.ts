@@ -6,16 +6,20 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SaladModule } from './salad/salad.module';
 import { SharedMaterialModule } from './shared-material.module';
+import { OrderComponent } from './order/order.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SaladModule,
-    SharedMaterialModule
+    SharedMaterialModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideAnimationsAsync()

@@ -1,0 +1,12 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
