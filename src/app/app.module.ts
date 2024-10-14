@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SaladModule } from './salad/salad.module';
+import { SharedMaterialModule } from './shared-material.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { SaladModule } from './salad/salad.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SaladModule
+    SaladModule,
+    SharedMaterialModule
   ],
   providers: [
     provideAnimationsAsync()
