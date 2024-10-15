@@ -18,8 +18,7 @@ export class SaladComponent implements OnInit {
     })
   }
 
-  chooseTopping(event: MatSelectionListChange) {
-    const selectedTopping = event.source.selectedOptions.selected[0].value
+  chooseTopping(selectedTopping: Topping) {
 
     console.log(selectedTopping)
   }

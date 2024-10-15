@@ -1,10 +1,6 @@
 <div class="headline mat-headline-medium">Welcome {{ saladService.name }}</div>
 
-<mat-selection-list
-  (selectionChange)="chooseTopping($event)"
-  [multiple]="false"
->
-  <mat-list-option *ngFor="let topping of toppings" [value]="topping">
-    {{ topping.name }} ({{ topping.price }} €)
-  </mat-list-option>
-</mat-selection-list>
+<app-toppings
+  [toppings]="toppings"
+  (selectTopping)="chooseTopping($event)"
+></app-toppings>
