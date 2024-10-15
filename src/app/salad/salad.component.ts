@@ -20,13 +20,18 @@ export class SaladComponent implements OnInit {
     //   this.toppings = values;
     // })
 
-    this.activatedRoute.data.subscribe(({ toppings }) => {
-      console.log('from resolver', toppings)
+    this.activatedRoute.data.subscribe(({ data }) => {
+      console.log('from resolver', data)
     })
   }
 
   chooseTopping(selectedTopping: Topping) {
 
     console.log(selectedTopping)
+  }
+
+  logChangeDetection() {
+    console.log('SaladComponent rendered');
+    return true;
   }
 }

@@ -10,3 +10,7 @@
   [toppings]="toppings"
   (selectTopping)="chooseTopping($event)"
 ></app-toppings>
+
+<ng-container *ngIf="logChangeDetection()"></ng-container>
+
+<button (click)="({})">SaladComponent</button>

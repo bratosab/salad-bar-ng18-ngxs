@@ -9,7 +9,7 @@ const routes: Routes = [
     path: 'salad',
     component: SaladComponent,
     canActivate: [saladGuard],
-    resolve: { toppings: toppingsResolver },
+    resolve: { data: toppingsResolver },
   },
 ];
 

@@ -2,7 +2,9 @@
   (selectionChange)="chooseTopping($event)"
   [multiple]="false"
 >
-  <mat-list-option *ngFor="let topping of toppings" [value]="topping">
+  <mat-list-option *ngFor="let topping of toppings; trackBy: trackToppings"  [value]="topping">
     {{ topping.name }} ({{ topping.price }} €)
   </mat-list-option>
 </mat-selection-list>
+
+<ng-container *ngIf="logChangeDetection()"></ng-container>

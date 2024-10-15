@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'salad-bar';
+
+  logChangeDetection() {
+    console.log('AppComponent rendered');
+    return true;
+  }
 }
