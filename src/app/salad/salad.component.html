@@ -1,3 +1,7 @@
-<div class="headline mat-headline-medium">
-    Welcome {{ saladService.name }}
-</div>
+<div class="headline mat-headline-medium">Welcome {{ saladService.name }}</div>
+
+<ul>
+  <li *ngFor="let topping of toppings">
+    {{ topping.name }} ({{ topping.price }} €)
+  </li>
+</ul>

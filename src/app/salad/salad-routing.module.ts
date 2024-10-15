@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SaladComponent } from './salad.component';
+import { saladGuard } from '../core/salad.guard';
 
-const routes: Routes = [{ path: 'salad', component: SaladComponent }];
+const routes: Routes = [
+  { path: 'salad', component: SaladComponent, canActivate: [saladGuard] },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
