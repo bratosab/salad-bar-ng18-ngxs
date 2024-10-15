@@ -8,14 +8,12 @@ import { SharedMaterialModule } from '../shared-material.module';
 
 
 @NgModule({
-  declarations: [
-    SaladComponent,
-    ToppingsComponent
-  ],
-  imports: [
-    CommonModule,
-    SaladRoutingModule,
-    SharedMaterialModule
-  ]
+    imports: [
+        CommonModule,
+        SaladRoutingModule,
+        SharedMaterialModule,
+        SaladComponent,
+        ToppingsComponent
+    ]
 })
 export class SaladModule { }

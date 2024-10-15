@@ -3,11 +3,15 @@ import { SaladService } from '../providers/salad.service';
 import { Topping } from '../models/topping.model';
 import { MatSelectionListChange } from '@angular/material/list';
 import { ActivatedRoute } from '@angular/router';
+import { NgIf, AsyncPipe } from '@angular/common';
+import { ToppingsComponent } from './toppings/toppings.component';
 
 @Component({
-  selector: 'app-salad',
-  templateUrl: './salad.component.html',
-  styleUrl: './salad.component.css'
+    selector: 'app-salad',
+    templateUrl: './salad.component.html',
+    styleUrl: './salad.component.css',
+    standalone: true,
+    imports: [NgIf, ToppingsComponent, AsyncPipe]
 })
 export class SaladComponent implements OnInit {
   saladService = inject(SaladService);

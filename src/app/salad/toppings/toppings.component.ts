@@ -1,12 +1,15 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatSelectionListChange } from '@angular/material/list';
+import { MatSelectionListChange, MatSelectionList, MatListOption } from '@angular/material/list';
 import { Topping } from '../../models/topping.model';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-toppings',
-  templateUrl: './toppings.component.html',
-  styleUrl: './toppings.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-toppings',
+    templateUrl: './toppings.component.html',
+    styleUrl: './toppings.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [MatSelectionList, NgFor, MatListOption, NgIf]
 })
 export class ToppingsComponent {
   @Input()

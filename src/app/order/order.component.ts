@@ -1,12 +1,26 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { SaladService } from '../providers/salad.service';
 import { Router } from '@angular/router';
+import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { NgIf } from '@angular/common';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'app-order',
-  templateUrl: './order.component.html',
-  styleUrl: './order.component.css',
+    selector: 'app-order',
+    templateUrl: './order.component.html',
+    styleUrl: './order.component.css',
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        MatError,
+        NgIf,
+        MatButton,
+    ],
 })
 export class OrderComponent implements OnInit {
   orderForm!: FormGroup;
