@@ -5,12 +5,7 @@ import { saladGuard } from '../core/salad.guard';
 import { toppingsResolver } from '../core/toppings.resolver';
 
 const routes: Routes = [
-  {
-    path: 'salad',
-    component: SaladComponent,
-    canActivate: [saladGuard],
-    resolve: { data: toppingsResolver },
-  },
+  
 ];
 
 @NgModule({
