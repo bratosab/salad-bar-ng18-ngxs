@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SaladService } from '../providers/salad.service';
 import { Router } from '@angular/router';
@@ -11,11 +11,15 @@ import { Router } from '@angular/router';
 export class OrderComponent implements OnInit {
   orderForm!: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private saladService: SaladService,
-    private router: Router
-  ) {}
+  private fb = inject(FormBuilder);
+  private saladService = inject(SaladService);
+  private router = inject(Router);
+
+  // constructor(
+  //   private fb: FormBuilder,
+  //   private saladService: SaladService,
+  //   private router: Router
+  // ) {}
 
   ngOnInit(): void {
     this.orderForm = this.fb.group({
