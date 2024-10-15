@@ -5,21 +5,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SaladModule } from './salad/salad.module';
-import { SharedMaterialModule } from './shared-material.module';
+
 import { OrderComponent } from './order/order.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [AppComponent],
     imports: [
-        BrowserModule,
-        AppRoutingModule,
-        SaladModule,
-        SharedMaterialModule,
-        ReactiveFormsModule,
-        OrderComponent
-    ],
+    BrowserModule,
+    AppRoutingModule,
+    SaladModule,
+    ReactiveFormsModule,
+    OrderComponent,
+    MatIconModule,
+    MatToolbarModule,
+    MatButtonModule
+],
     providers: [
         provideAnimationsAsync(),
         provideHttpClient()
