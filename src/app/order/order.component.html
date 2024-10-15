@@ -7,7 +7,10 @@
   <mat-form-field>
     <mat-label>Tel</mat-label>
     <input matInput type="text" formControlName="tel" />
-    <mat-error *ngIf="telControl.hasError('minLength')">
+    <mat-error *ngIf="telControl?.hasError('required')">
+        Please enter a phone number
+      </mat-error>
+    <mat-error *ngIf="telControl?.hasError('minlength')">
       Please enter a valid phone number
     </mat-error>
   </mat-form-field>

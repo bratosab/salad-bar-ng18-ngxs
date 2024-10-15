@@ -1,15 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SaladService } from '../providers/salad.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrl: './order.component.css'
+  styleUrl: './order.component.css',
 })
 export class OrderComponent implements OnInit {
   orderForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private saladService: SaladService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.orderForm = this.fb.group({
@@ -19,10 +25,15 @@ export class OrderComponent implements OnInit {
   }
 
   get telControl() {
-    return this.orderForm.controls['tel'];
+    return this.orderForm.get('tel');
   }
 
   startOrder() {
-    console.log(this.orderForm.value);
+    if (this.orderForm.valid) {
+      this.saladService.name = this.orderForm.value.name;
+      this.saladService.tel = this.orderForm.value.tel;
+
+      this.router.navigate(['salad']);
+    }
   }
 }
