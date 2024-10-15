@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SaladService } from '../providers/salad.service';
 import { Topping } from '../models/topping.model';
+import { MatSelectionListChange } from '@angular/material/list';
 
 @Component({
   selector: 'app-salad',
@@ -15,5 +16,11 @@ export class SaladComponent implements OnInit {
     this.saladService.getToppings().subscribe(values => {
       this.toppings = values;
     })
+  }
+
+  chooseTopping(event: MatSelectionListChange) {
+    const selectedTopping = event.source.selectedOptions.selected[0].value
+
+    console.log(selectedTopping)
   }
 }
