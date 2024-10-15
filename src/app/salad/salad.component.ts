@@ -10,12 +10,13 @@ import { MatSelectionListChange } from '@angular/material/list';
 })
 export class SaladComponent implements OnInit {
   saladService = inject(SaladService);
-  toppings: Topping[] = [];
+  // toppings: Topping[] = [];
+  toppings$ = this.saladService.getToppings();
 
   ngOnInit() {
-    this.saladService.getToppings().subscribe(values => {
-      this.toppings = values;
-    })
+    // this.saladService.getToppings().subscribe(values => {
+    //   this.toppings = values;
+    // })
   }
 
   chooseTopping(selectedTopping: Topping) {

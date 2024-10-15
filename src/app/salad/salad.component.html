@@ -1,6 +1,12 @@
 <div class="headline mat-headline-medium">Welcome {{ saladService.name }}</div>
 
+<!-- <app-toppings
+  [toppings]="toppings"
+  (selectTopping)="chooseTopping($event)"
+></app-toppings> -->
+
 <app-toppings
+  *ngIf="toppings$ | async as toppings"
   [toppings]="toppings"
   (selectTopping)="chooseTopping($event)"
 ></app-toppings>
