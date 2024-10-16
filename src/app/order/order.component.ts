@@ -6,6 +6,8 @@ import { MatFormField, MatLabel, MatError } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { NgIf } from '@angular/common';
 import { MatButton } from '@angular/material/button';
+import { Store } from '@ngxs/store';
+import { SetName, SetTel } from '../store/order.action';
 
 @Component({
     selector: 'app-order',
@@ -28,6 +30,7 @@ export class OrderComponent implements OnInit {
   private fb = inject(FormBuilder);
   private saladService = inject(SaladService);
   private router = inject(Router);
+  private store = inject(Store)
 
   // constructor(
   //   private fb: FormBuilder,
@@ -48,8 +51,10 @@ export class OrderComponent implements OnInit {
 
   startOrder() {
     if (this.orderForm.valid) {
-      this.saladService.name = this.orderForm.value.name;
-      this.saladService.tel = this.orderForm.value.tel;
+      // this.saladService.name = this.orderForm.value.name;
+      // this.saladService.tel = this.orderForm.value.tel;
+      this.store.dispatch(new SetName(this.orderForm.value.name))
+      this.store.dispatch(new SetTel(this.orderForm.value.tel))
 
       this.router.navigate(['salad']);
     }
