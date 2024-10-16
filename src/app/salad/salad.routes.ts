@@ -8,6 +8,6 @@ export const saladRoutes: Routes = [
     path: 'salad',
     component: SaladComponent,
     canActivate: [saladGuard],
-    resolve: { data: toppingsResolver },
+    // resolve: { data: toppingsResolver },
   },
 ];
