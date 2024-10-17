@@ -49,6 +49,7 @@ export class SaladState {
         ctx.dispatch(new Toppings.Success(toppings));
       }),
       catchError((err) => {
+        console.error(err);
         ctx.dispatch(new Toppings.Error(err));
         return of(ctx.getState().toppings);
       })
@@ -60,7 +61,6 @@ export class SaladState {
     ctx: StateContext<SaladStateModel>,
     action: Toppings.Success
   ) {
-    const state = ctx.getState();
     ctx.patchState({
       toppings: [...action.toppings],
     });
@@ -71,7 +71,6 @@ export class SaladState {
     ctx: StateContext<SaladStateModel>,
     action: Toppings.Error
   ) {
-    const state = ctx.getState();
     ctx.patchState({
       error: action.error.message,
     });

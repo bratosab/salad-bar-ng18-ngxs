@@ -12,7 +12,7 @@ import { NgIf, AsyncPipe } from '@angular/common';
 import { ToppingsComponent } from './toppings/toppings.component';
 import { Store } from '@ngxs/store';
 import { OrderStateModel } from '../store/order.state';
-import { ChooseTopping, FetchToppings } from './store/salad.action';
+import { ChooseTopping, FetchToppings, Toppings } from './store/salad.action';
 import { SaladStateModel } from './store/salad.state';
 
 @Component({
@@ -50,6 +50,8 @@ export class SaladComponent implements OnInit {
     //   next: () => console.log('success !'),
     //   error: (err) => console.error('Something went wrong'),
     // });
+
+    this.store.dispatch(new Toppings.Fetch())
   }
 
   chooseTopping(selectedTopping: Topping) {

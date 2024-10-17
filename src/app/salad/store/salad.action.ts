@@ -15,7 +15,7 @@ export class ChooseTopping {
 
 export namespace Toppings {
   export class Fetch {
-    static readonly type = `${ACTION_SCOPE} Fetch Toppings`;
+    static readonly type = `${ACTION_SCOPE} Fetch Toppings Init`;
   }
   export class Success {
     static readonly type = `${ACTION_SCOPE} Fetch Toppings Success`;
