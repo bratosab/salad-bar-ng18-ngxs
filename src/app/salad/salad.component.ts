@@ -13,7 +13,7 @@ import { ToppingsComponent } from './toppings/toppings.component';
 import { Store } from '@ngxs/store';
 import { OrderStateModel } from '../store/order.state';
 import { ChooseTopping, FetchToppings, Toppings } from './store/salad.action';
-import { SaladStateModel } from './store/salad.state';
+import { SaladState, SaladStateModel } from './store/salad.state';
 
 @Component({
   selector: 'app-salad',
@@ -36,6 +36,8 @@ export class SaladComponent implements OnInit {
   name = this.store.selectSignal<OrderStateModel['name']>(
     (state) => state.order.name
   );
+
+  totalPrice = this.store.selectSignal<number>(SaladState.getTotalPrice);
 
   ngOnInit() {
     // this.saladService.getToppings().subscribe(values => {

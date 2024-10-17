@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Topping } from '../../models/topping.model';
-import { Action, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { ChooseTopping, FetchToppings, Toppings } from './salad.action';
 import { SaladService } from '../../providers/salad.service';
 import { catchError, of, tap } from 'rxjs';
@@ -22,6 +22,13 @@ export interface SaladStateModel {
 @Injectable()
 export class SaladState {
   constructor(private saladService: SaladService) {}
+
+  @Selector()
+  static getTotalPrice(state: SaladStateModel) {
+    return state.chosenToppings.reduce((total, topping) => {
+      return (total + topping.price);
+    }, 0);
+  }
 
   @Action(ChooseTopping)
   chooseTopping(ctx: StateContext<SaladStateModel>, action: ChooseTopping) {
