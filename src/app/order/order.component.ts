@@ -28,7 +28,6 @@ export class OrderComponent implements OnInit {
   orderForm!: FormGroup;
 
   private fb = inject(FormBuilder);
-  private saladService = inject(SaladService);
   private router = inject(Router);
   private store = inject(Store)
 

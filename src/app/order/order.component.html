@@ -1,4 +1,4 @@
-<form [formGroup]="orderForm" (submit)="startOrder()">
+<form [formGroup]="orderForm" (submit)="startOrder()" data-test="order-form">
   <mat-form-field>
     <mat-label>Name</mat-label>
     <input matInput type="text" formControlName="name" />
