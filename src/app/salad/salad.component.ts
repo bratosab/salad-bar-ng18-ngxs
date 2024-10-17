@@ -46,10 +46,10 @@ export class SaladComponent implements OnInit {
       console.log('from resolver', data);
     });
 
-    this.store.dispatch(new FetchToppings()).subscribe({
-      next: () => console.log('success !'),
-      error: (err) => console.error('Something went wrong'),
-    });
+    // this.store.dispatch(new FetchToppings()).subscribe({
+    //   next: () => console.log('success !'),
+    //   error: (err) => console.error('Something went wrong'),
+    // });
   }
 
   chooseTopping(selectedTopping: Topping) {

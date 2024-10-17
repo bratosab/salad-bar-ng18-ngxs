@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Topping } from '../../models/topping.model';
 import { Action, State, StateContext } from '@ngxs/store';
-import { ChooseTopping, FetchToppings } from './salad.action';
+import { ChooseTopping, FetchToppings, Toppings } from './salad.action';
 import { SaladService } from '../../providers/salad.service';
-import { tap } from 'rxjs';
+import { catchError, of, tap } from 'rxjs';
 
 export interface SaladStateModel {
   toppings: Topping[];
   chosenToppings: Topping[];
+  error: string | null;
 }
 
-@State({
+@State<SaladStateModel>({
   name: 'salad',
   defaults: {
     toppings: [],
     chosenToppings: [],
+    error: null,
   },
 })
 @Injectable()
@@ -30,7 +32,7 @@ export class SaladState {
   }
 
   @Action(FetchToppings)
-  fetchToppings(ctx: StateContext<SaladStateModel>, action: FetchToppings) {
+  fetchToppings(ctx: StateContext<SaladStateModel>) {
     return this.saladService.getToppings().pipe(
       tap((toppings) => {
         ctx.patchState({
@@ -38,5 +40,40 @@ export class SaladState {
         });
       })
     );
+  }
+
+  @Action(Toppings.Fetch)
+  fetchToppings2(ctx: StateContext<SaladStateModel>) {
+    return this.saladService.getToppings().pipe(
+      tap((toppings) => {
+        ctx.dispatch(new Toppings.Success(toppings));
+      }),
+      catchError((err) => {
+        ctx.dispatch(new Toppings.Error(err));
+        return of(ctx.getState().toppings);
+      })
+    );
+  }
+
+  @Action(Toppings.Success)
+  fetchToppingsSuccess(
+    ctx: StateContext<SaladStateModel>,
+    action: Toppings.Success
+  ) {
+    const state = ctx.getState();
+    ctx.patchState({
+      toppings: [...action.toppings],
+    });
+  }
+
+  @Action(Toppings.Error)
+  fetchToppingsError(
+    ctx: StateContext<SaladStateModel>,
+    action: Toppings.Error
+  ) {
+    const state = ctx.getState();
+    ctx.patchState({
+      error: action.error.message,
+    });
   }
 }
