@@ -8,7 +8,7 @@ import { SaladService } from '../providers/salad.service';
 import { Topping } from '../models/topping.model';
 import { MatSelectionListChange } from '@angular/material/list';
 import { ActivatedRoute } from '@angular/router';
-import { NgIf, AsyncPipe } from '@angular/common';
+import { NgIf, AsyncPipe, CurrencyPipe } from '@angular/common';
 import { ToppingsComponent } from './toppings/toppings.component';
 import { Store } from '@ngxs/store';
 import { OrderStateModel } from '../store/order.state';
@@ -21,7 +21,7 @@ import { SaladState, SaladStateModel } from './store/salad.state';
   styleUrl: './salad.component.css',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgIf, ToppingsComponent, AsyncPipe],
+  imports: [NgIf, ToppingsComponent, AsyncPipe, CurrencyPipe],
 })
 export class SaladComponent implements OnInit {
   // saladService = inject(SaladService);

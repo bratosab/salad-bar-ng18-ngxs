@@ -5,7 +5,7 @@
   (selectTopping)="chooseTopping($event)"
 ></app-toppings> -->
 
-<p>Total price : {{ totalPrice() }} €</p>
+<p i18n>Total price : {{ totalPrice() | currency : '€' }}</p>
 
 <app-toppings
   *ngIf="toppings$ | async as toppings"

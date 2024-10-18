@@ -13,6 +13,10 @@ export class SaladService {
         console.log('SaladService constructor');
     }
 
+    /**
+     * Fetch toppings from API
+     * @returns an Observable of Toppings[]
+     */
     getToppings() {
         return this.http.get<Topping[]>('https://retoolapi.dev/udhTkG/toppings')
     }

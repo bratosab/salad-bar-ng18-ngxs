@@ -1,18 +1,33 @@
 <form [formGroup]="orderForm" (submit)="startOrder()" data-test="order-form">
   <mat-form-field>
-    <mat-label>Name</mat-label>
-    <input matInput type="text" formControlName="name" data-test="name-control" />
-    <mat-error>Please enter your name</mat-error>
+    <mat-label i18n="name-1">Name</mat-label>
+    <mat-label i18n="name-2">Name</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="name"
+      data-test="name-control"
+    />
+    <mat-error i18n>Please enter your name</mat-error>
   </mat-form-field>
   <mat-form-field>
-    <mat-label>Tel</mat-label>
-    <input matInput type="text" formControlName="tel" data-test="tel-control" />
-    <mat-error *ngIf="telControl?.hasError('required')">
-        Please enter a phone number
-      </mat-error>
-    <mat-error *ngIf="telControl?.hasError('minlength')">
+    <mat-label i18n>Tel</mat-label>
+    <input
+      matInput
+      type="text"
+      formControlName="tel"
+      data-test="tel-control"
+      i18n-name
+      name="Telephone"
+    />
+    <mat-error *ngIf="telControl?.hasError('required')" i18n>
+      Please enter a phone number
+    </mat-error>
+    <mat-error *ngIf="telControl?.hasError('minlength')" i18n>
       Please enter a valid phone number
     </mat-error>
   </mat-form-field>
-  <button type="submit" mat-raised-button data-test="submit-control">Start order !</button>
+  <button type="submit" mat-raised-button data-test="submit-control">
+    Start order !
+  </button>
 </form>
