@@ -30,7 +30,7 @@ describe("Start Order", () => {
     cy.wait("@getToppings")
 
     cy.get('mat-selection-list mat-list-option').first().click()
-    cy.get('mat-selection-list mat-list-option').next().click()
+    cy.get('mat-selection-list mat-list-option').first().next().click()
 
     cy.get('p').contains('8 €')
   });

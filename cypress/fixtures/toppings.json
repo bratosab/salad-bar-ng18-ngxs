@@ -7,4 +7,9 @@
     "id": 2,
     "name": "Cheese",
     "price": 3
+},
+{
+    "id": 3,
+    "name": "Pickles",
+    "price": 3
 }]
