@@ -1,12 +1,12 @@
 <form [formGroup]="orderForm" (submit)="startOrder()" data-test="order-form">
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input matInput type="text" formControlName="name" />
+    <input matInput type="text" formControlName="name" data-test="name-control" />
     <mat-error>Please enter your name</mat-error>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Tel</mat-label>
-    <input matInput type="text" formControlName="tel" />
+    <input matInput type="text" formControlName="tel" data-test="tel-control" />
     <mat-error *ngIf="telControl?.hasError('required')">
         Please enter a phone number
       </mat-error>
@@ -14,5 +14,5 @@
       Please enter a valid phone number
     </mat-error>
   </mat-form-field>
-  <button type="submit" mat-raised-button>Start order !</button>
+  <button type="submit" mat-raised-button data-test="submit-control">Start order !</button>
 </form>
