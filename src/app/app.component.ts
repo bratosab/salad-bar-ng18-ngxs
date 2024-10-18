@@ -22,6 +22,7 @@ export class AppComponent {
     return true;
   }
 
+
   getAnswer() {
     alert(`The anwser to life is : ${this.answerService.getAnswer()}`);
   }

@@ -1,13 +1,19 @@
-import { Injectable } from '@angular/core';
-const mathWorker = new Worker(
-  new URL('../workers/math-worker.js', import.meta.url)
-);
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
+import { Inject, Injectable, InjectionToken, PLATFORM_ID } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AnswerService {
-  constructor() {}
+  mathWorker!: Worker;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: InjectionToken<Object>) {
+    if (isPlatformBrowser(this.platformId)) {
+      this.mathWorker = new Worker(
+        new URL('../workers/math-worker.js', import.meta.url)
+      );
+    }
+  }
 
   getAnswer() {
     let sum = 0;
@@ -18,9 +24,11 @@ export class AnswerService {
   }
 
   getAnswerByMathWorker(callback: (value: number) => void) {
-    mathWorker.onmessage = (e) => {
-      callback(e.data);
-    };
-    mathWorker.postMessage('answer');
+    if (isPlatformBrowser(this.platformId)) {
+      this.mathWorker.onmessage = (e) => {
+        callback(e.data);
+      };
+      this.mathWorker.postMessage('answer');
+    }
   }
 }
